@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try
         {
-            return FilmResource::collection(Film::paginate(PAGINATION))->response()->setStatusCode(OK);
+            return FilmResource::collection(FILM::title($request)->rating($request)->min($request)->max($request)->paginate(PAGINATION))->response()->setStatusCode(OK);
         }
         catch(Exception $ex)
         {
@@ -28,10 +28,6 @@ class FilmController extends Controller
         {
             $average = DB::table('critics')->where('film_id', $id)->avg('score');
             return (response()->json(['score' => $average]))->setStatusCode(OK);
-        }
-        catch(QueryException $ex)
-        {
-            abort(NOT_FOUND, 'Invalide Id');
         }
         catch(Exception $ex)
         {

@@ -19,7 +19,7 @@ class FilmResource extends JsonResource
           'release_year'=>$this->release_year,
           'length'=>$this->length,
           'description'=>$this->description,
-          'rating'=>$this->description,
+          'rating'=>$this->rating,
           'language_id'=>$this->language_id,
           'special_features'=>$this->special_features,
           'image'=>$this->image  

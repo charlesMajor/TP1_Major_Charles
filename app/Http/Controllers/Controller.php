@@ -14,7 +14,7 @@ define('NOT_FOUND', 404);
 define('INVALID_DATA', 422);
 define('SERVER_ERROR', 500);
 
-define('PAGINATION', 10);
+define('PAGINATION', 20);
 
 class Controller extends BaseController
 {
