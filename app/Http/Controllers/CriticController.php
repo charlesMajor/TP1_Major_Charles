@@ -12,12 +12,20 @@ class CriticController extends Controller
     {
         try
         {
-            $critic = Critic::findOrFail($id);
-            $critic->delete();
+            try
+            {
+                $critic = Critic::findOrFail($id);
+                $critic->delete();
+            }
+            catch(QueryException $ex)
+            {
+                abort(NOT_FOUND, 'Invalide Id');
+            }
         }
-        catch(QueryException $ex)
+        catch(Exception $ex)
         {
-            abort(NOT_FOUND, 'Invalide Id');
+            abort(SERVER_ERROR, 'Server error');
         }
+        
     }
 }

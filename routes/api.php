@@ -25,4 +25,3 @@ Route::put('/users/{id}', 'App\Http\Controllers\UserController@update');
 Route::delete('/critics/{id}', 'App\Http\Controllers\CriticController@destroy');
 Route::get('/films/{id}/average_score', 'App\Http\Controllers\FilmController@averageScore');
 Route::get('/users/{id}/favorite_language', 'App\Http\Controllers\UserController@favoriteLanguage');
-//informations de films suite à une recherche

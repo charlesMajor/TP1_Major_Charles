@@ -40,6 +40,14 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        try {
+            $user = User::findOrFail($id);
+        }
+        catch(QueryException $ex)
+        {
+            abort(NOT_FOUND, 'Invalid id');
+        }  
+
         try
         {
             $validator = Validator::make($request->all(), [
@@ -55,13 +63,8 @@ class UserController extends Controller
                 abort(INVALID_DATA, 'Invalid data');
             }
 
-            $user = User::findOrFail($id);
             $user->delete();
             $user->insert($request->all());
-        }
-        catch(QueryException $ex)
-        {
-            abort(NOT_FOUND, 'Invalid id');
         }
         catch(Exception $ex)
         {

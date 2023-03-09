@@ -18,8 +18,8 @@ class FilmFactory extends Factory
 
         return [
             'title'=>$faker->text(50),
-            'release_year'=>$faker->text(4),
-            'length'=>$faker->integer(),
+            'release_year'=>$faker->year(),
+            'length'=>$faker->randomNumber(3),
             'description'=>$faker->text(),
             'rating'=>$faker->text(5),
             'special_features'=>$faker->text(200),

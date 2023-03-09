@@ -17,7 +17,7 @@ class CriticFactory extends Factory
         $faker = Faker::create();
 
         return [
-            'score'=>$faker->randomFloat($nbMaxDecimals = 1, $min = 0, $max = 100),
+            'score'=>$faker->randomFloat($nbMaxDecimals = 1, $min = 0, $max = 25),
             'comment'=>$faker->text($maxNbChars = 200),
             'film_id'=>$faker->numberBetween($min = 1, $max = 100) 
         ];
