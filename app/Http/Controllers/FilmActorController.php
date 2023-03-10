@@ -8,7 +8,27 @@ use App\Models\Film;
 
 class FilmActorController extends Controller
 {
-    public function index($id)
+    /**
+    *@OA\GET(
+    *path="/api/films/{id}/actors",
+    *tags={"Films"},
+    *summary="Gets a movie's actors",
+    *@OA\Parameter(
+    *   description="Id of movie",
+    *   in="path",
+    *   name="id",
+    *   required=true,
+    *   @OA\Schema(type="integer")),
+    *@OA\Response(
+    *    response = 200,
+    *    description = "OK")
+    *)
+    *@OA\Response(
+    *    response = 404,
+    *    description = "Not found")
+    *)
+    */
+    public function show($id)
     {
         try
         {

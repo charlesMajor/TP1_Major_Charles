@@ -10,6 +10,32 @@ use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
+    /**
+    *@OA\GET(
+    *path="/api/films",
+    *tags={"Films"},
+    *summary="Gets list of movies",
+    *@OA\Parameter(
+    *   description="Keyword in wanted movie's name",
+    *   name="keyword",
+    *   in="query"),
+    *@OA\Parameter(
+    *   description="Rating of the wanted movie",
+    *   name="rating",
+    *   in="query"),
+    *@OA\Parameter(
+    *   description="Minimum length of the wanted movie",
+    *   name="minLength",
+    *   in="query"),
+    *@OA\Parameter(
+    *   description="Maximum length of the wanted movie",
+    *   name="maxLength",
+    *   in="query"),
+    *@OA\Response(
+    *    response = 200,
+    *    description = "OK")
+    *)
+    */
     public function index(Request $request)
     {
         try
@@ -22,6 +48,22 @@ class FilmController extends Controller
         }
     }
 
+    /**
+    *@OA\GET(
+    *path="/api/films/{id}/average_score",
+    *tags={"Films"},
+    *summary="Gets a movie's average score",
+    *@OA\Parameter(
+    *   description="Id of movie",
+    *   in="path",
+    *   name="id",
+    *   required=true,
+    *   @OA\Schema(type="integer")),
+    *@OA\Response(
+    *    response = 200,
+    *    description = "OK")
+    *)
+    */
     public function averageScore($id)
     {
         try

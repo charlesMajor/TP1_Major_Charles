@@ -8,6 +8,31 @@ use App\Models\Critic;
 
 class CriticController extends Controller
 {
+
+     /**
+     * @OA\Delete(
+     *      path="/api/critics/{id}",
+     *      tags={"Critics"},
+     *      summary="Delete existing Critic",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Id of critic to delete",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Ok"
+     *       ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Not found"
+     *       )
+     * )
+     */
     public function destroy($id)
     {
         try

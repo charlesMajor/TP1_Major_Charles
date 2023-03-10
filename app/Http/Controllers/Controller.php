@@ -7,6 +7,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+/** * @OA\Info(title="Films API", version="0.1") */
+
 define('OK', 200);
 define('CREATED', 201);
 define('NO_CONTENT', 204);

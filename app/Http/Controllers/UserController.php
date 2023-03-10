@@ -12,6 +12,41 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+   /** 
+   *@OA\Post(
+   *    path="/api/users",
+   *    tags={"Users"},
+   *    summary="Creates a user",
+   *    @OA\RequestBody(
+   *        @OA\MediaType(
+   *            mediaType="application\json",
+   *            @OA\Schema(
+   *                @OA\Property(
+   *                    property="login",
+   *                    type="string"),
+   *                @OA\Property(
+   *                    property="password",
+   *                    type="string"),
+   *                @OA\Property(
+   *                    property="email",
+   *                    type="string"),
+   *                @OA\Property(
+   *                    property="last_name",
+   *                    type="string"),
+   *             @OA\Property(
+   *                    property="first_name",
+   *                    type="string"),
+   *            )
+   *        )
+   *    ),
+   *    @OA\Response(
+   *        response = 201,
+   *        description = "Created"),
+   *    @OA\Response(
+    *       response = 422,
+    *       description = "Invalid data")
+   *)
+   */
     public function create(Request $request)
     {
         try
@@ -38,6 +73,50 @@ class UserController extends Controller
         }
     }
 
+     /**
+     * @OA\Put(
+     *     path="/api/users/{id}",
+     *     tags={"Users"},
+     *     summary="Updates a user",
+     *     @OA\Parameter(
+    *           description="Id of user to update",
+    *           in="path",
+    *           name="id",
+    *           required=true,
+    *           @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+   *            @OA\MediaType(
+   *                mediaType="application\json",
+   *                @OA\Schema(
+   *                    @OA\Property(
+   *                        property="login",
+   *                        type="string"),
+   *                    @OA\Property(
+   *                        property="password",
+   *                        type="string"),
+   *                    @OA\Property(
+   *                        property="email",
+   *                        type="string"),
+   *                    @OA\Property(
+   *                        property="last_name",
+   *                        type="string"),
+   *                    @OA\Property(
+   *                        property="first_name",
+   *                        type="string"),
+   *                )   
+   *            )
+   *        ),
+   *        @OA\Response(
+     *         response=200,
+     *         description="OK"),
+     *      @OA\Response(
+    *           response = 404,
+    *           description = "Not found"),
+    *       @OA\Response(
+    *           response = 422,
+    *           description = "Invalid data")
+     * )
+     */
     public function update(Request $request, $id)
     {
         try {
@@ -72,6 +151,22 @@ class UserController extends Controller
         }
     }
 
+    /**
+    *@OA\GET(
+    *path="/api/users/{id}/favorite_language",
+    *tags={"Users"},
+    *summary="Gets a user's favorite language",
+    *@OA\Parameter(
+    *   description="Id of user",
+    *   in="path",
+    *   name="id",
+    *   required=true,
+    *   @OA\Schema(type="integer")),
+    *@OA\Response(
+    *    response = 200,
+    *    description = "OK")
+    *)
+    */
     public function favoriteLanguage($id)
     {
         try
